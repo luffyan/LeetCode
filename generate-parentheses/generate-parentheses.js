@@ -8,6 +8,7 @@ var generateParenthesis = function(n) {
     function generate(leftCount, rightCount, result) {
         if (rightCount === n) {
             parens.push(result);
+            return;
         }
         if (leftCount < n) {
             generate(leftCount+1, rightCount, result + "(");
