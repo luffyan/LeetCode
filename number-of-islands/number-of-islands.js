@@ -12,8 +12,8 @@ var numIslands = function(grid) {
     for (var i = 0; i < row; i++) {
         for (var j = 0; j < col; j++) {
              if(grid[i][j] === "1") {
-                 num++;
-                sink(grid, i, j)
+                num++;
+                sink(grid, i, j);
             }
         }
     }
