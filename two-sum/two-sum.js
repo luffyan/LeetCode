@@ -12,6 +12,9 @@ var twoSum = function(nums, target) {
             return [i, map[x]];
         }
         map[curr] = i; 
+        console.log(curr)
+         console.log(map[curr])
     }
+   
     
 };
