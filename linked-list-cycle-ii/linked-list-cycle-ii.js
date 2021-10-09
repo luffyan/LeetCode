@@ -15,8 +15,8 @@ var detectCycle = function(head) {
     
     while (head !== null) {
         // count[head] ? count[head]++ : count[head] = 1;
-       console.log(head.val);
-       console.log(count[head]);
+       // console.log(head.val);
+       // console.log(count);
         if (count.has(head)) {
             return head;
         }
