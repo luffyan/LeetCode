@@ -18,28 +18,32 @@ var findMode = function(root) {
     var result = [];
     
     function inOrder(root, map, result) {
-    if (root === null) {
+        if (root === null) {
+            return result;
+        }
+        
+        result = inOrder(root.left, map, result);
+        
+        if (map[root.val] === undefined) {
+            map[root.val] = 1;
+        } else {
+            map[root.val]++;
+        }
+        
+        if (map[root.val] === maxCount) {
+            result.push(root.val);
+        }
+        if (map[root.val] > maxCount) {
+            maxCount = map[root.val];
+            result = [];
+            result.push(root.val);
+        }
+        
+        result = inOrder(root.right, map, result);
+        
         return result;
     }
-    result = inOrder(root.left, map, result);
-    if (map[root.val] === undefined) {
-        map[root.val] = 1;
-    } else {
-        map[root.val]++;
-    }
-    if (map[root.val] > maxCount) {
-        maxCount = map[root.val];
-        result = [];
-        result.push(root.val);
-    }
-    else if (map[root.val] === maxCount) {
-        result.push(root.val);
-    }
-    result = inOrder(root.right, map, result);
-    return result;
-}
     
     return inOrder(root, modeMap, result);
-    //return result;
 };
 
