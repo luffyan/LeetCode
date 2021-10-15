@@ -14,15 +14,15 @@
 
 var findMode = function(root) {
     var maxCount = 0;
-    var modeMap = new Map();
+    var map = {};
     var result = [];
     
-    function inOrder(root, map, result) {
+    function inOrder(root) {
         if (root === null) {
-            return result;
+            return;
         }
         
-        result = inOrder(root.left, map, result);
+        inOrder(root.left);
         
         if (map[root.val] === undefined) {
             map[root.val] = 1;
@@ -39,11 +39,12 @@ var findMode = function(root) {
             result.push(root.val);
         }
         
-        result = inOrder(root.right, map, result);
+        inOrder(root.right);
         
-        return result;
     }
     
-    return inOrder(root, modeMap, result);
+    inOrder(root);
+    return result;
+    
 };
 
