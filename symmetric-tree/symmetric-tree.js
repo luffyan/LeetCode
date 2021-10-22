@@ -21,9 +21,9 @@ var isSymmetric = function(root) {
         if (node1.val !== node2.val) {
             return false;
         }
-        var child = isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left); 
-        return child;
+        return isMirror(node1.left, node2.right) && isMirror(node1.right, node2.left); 
+        
     }
-    return isMirror(root, root);
+    return isMirror(root.left, root.right);
     
 };
