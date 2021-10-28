@@ -3,25 +3,23 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-    var left = 0;
-    var right = 0;
-    var currLen = 0;
-    var maxLen = 0;
+    let left = 0, right = 0;
+    let longest = 0;
     
-    var map = {};
+    let window = {};
     
     while(right < s.length) {
-        var currChar = s[right];
-        map[currChar] = map[currChar]+1 || 1;
+        let rightChar = s[right];
+        window[rightChar] = window[rightChar]+1 || 1;
         right++;
         
-        while (map[currChar] > 1) {
-            map[s[left]]--;
+        while(window[rightChar] > 1) {
+            let leftChar = s[left];
+            window[leftChar]--;
             left++;
         }
-        currLen = right - left;
-        maxLen = Math.max(currLen, maxLen);
-        
+        let currLen = right - left;
+        longest = Math.max(currLen, longest);
     }
-    return maxLen;
+    return longest;
 };
