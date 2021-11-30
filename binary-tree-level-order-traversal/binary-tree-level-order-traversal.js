@@ -11,22 +11,26 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    var levels = [];
-    function bfs(node, level) {
-        if (node === null) return;
-        
-        // if(levels.length === 0) {
-        //     levels[level] = [];
-        // }
-        
-        // If there is no array for the specified index, then create an empty array
-    levels[level] = levels[level] || [];
-	// Push value to the array for the specified index
-    levels[level].push(node.val);
-        
-        if(node.left) bfs(node.left, level+1);
-        if(node.right) bfs(node.right, level+1);
+    if(root === null) return [];
+    var queue = [];
+    var result = [];
+    
+    queue.push(root);
+    
+    while(queue.length !== 0) {
+        //记录当前层有几个元素
+        var n = queue.length;
+        var temp = [];
+        //一口气处理完一层
+        while (n > 0) {
+            var curr = queue.shift();
+            temp.push(curr.val);
+            
+            if(curr.left !== null) queue.push(curr.left);
+            if(curr.right !== null) queue.push(curr.right);
+            n--;
+        }
+        result.push(temp);
     }
-    bfs(root, 0);
-    return levels;
+    return result;
 };
