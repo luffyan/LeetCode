@@ -12,15 +12,12 @@
  */
 var maxDepth = function(root) {
     
-    var bfs = function(node) {
-        if (node === null) {
-            return 0;
-        }
-        
-        var left = bfs(node.left);
-        var right = bfs(node.right);
-        return Math.max(left, right) + 1;
+    if(root === null) {
+        return 0;
     }
-    return bfs(root, 0);
     
+    var left = maxDepth(root.left);
+    var right = maxDepth(root.right);
+    
+    return Math.max(left, right) + 1;
 };
