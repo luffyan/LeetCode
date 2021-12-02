@@ -11,7 +11,7 @@ var permute = function(nums) {
         return result;
     }
     
-    var permuteHelper = (pos, list) => {
+    var permuteHelper = (list) => {
         if(list.length === nums.length) {
             result.push(list.slice());
             return;
@@ -23,12 +23,12 @@ var permute = function(nums) {
             
             list.push(nums[i]);
             visited[i] = true;
-            permuteHelper(i+1, list);
+            permuteHelper(list);
             
             visited[i] = false;
             list.pop();
         }
     }
-    permuteHelper(0, []);
+    permuteHelper([]);
     return result;
 };
