@@ -9,23 +9,22 @@ var subsetsWithDup = function(nums) {
         return result;
     }
     
-    nums = nums.sort(); // remember to sort
-    var subsetsHelper = (pos, subset) => {
-        result.push(subset.slice()); // remember to make a deep copy, subset.slice()
+    nums = nums.sort();
+    
+    var findSubset = (list, start) => {
+        result.push(list.slice());
         
-        //iterate through the array, find all combos starting with number at idx i;
-        for(var i = pos; i < nums.length; i++) {
-            if(i !== pos && nums[i] === nums[i-1]) {
+        for(var i = start; i < nums.length; i++) {
+            if(i > start && nums[i] === nums[i-1]) { //
                 continue;
             }
-            subset.push(nums[i]);
-            subsetsHelper(i+1, subset);
-            subset.pop();
-            
+            list.push(nums[i]);
+            findSubset(list, i+1);
+            list.pop();
         }
     }
     
-    subsetsHelper(0, []);
+    findSubset([], 0);
     return result;
 };
 
