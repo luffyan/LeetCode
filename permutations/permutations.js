@@ -3,7 +3,6 @@
  * @return {number[][]}
  */
 var permute = function(nums) {
-    
     var result = [];
     var visited = {};
     
@@ -11,7 +10,7 @@ var permute = function(nums) {
         return result;
     }
     
-    var permuteHelper = (list) => {
+    var findPermute = (list) => {
         if(list.length === nums.length) {
             result.push(list.slice());
             return;
@@ -20,15 +19,18 @@ var permute = function(nums) {
             if(visited[i]) {
                 continue;
             }
-            
             list.push(nums[i]);
             visited[i] = true;
-            permuteHelper(list);
             
-            visited[i] = false;
+            findPermute(list);
+            
             list.pop();
+            visited[i] = undefined;
         }
     }
-    permuteHelper([]);
+    
+    findPermute([]);
     return result;
 };
+
+ 
