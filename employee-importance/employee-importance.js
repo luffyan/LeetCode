@@ -13,24 +13,25 @@
  * @return {number}
  */
 var GetImportance = function(employees, id) {
+    // build a map
+    var map = {};
     var importance = 0;
-    
-    var importanceHelper = (currId) => {
-        
-        if(currId === null) return;
-        
-        for(var employee of employees) {
-            if(employee.id === currId) {
-                importance += employee.importance;
-            
-                var subs = employee.subordinates;
-                for (var subId of subs){
-                    importanceHelper(subId);
-                }
-            }
-        }
-        
+    for(var employee of employees) {
+        map[employee.id] = employee;
     }
-    importanceHelper(id);
+    
+    var calcImportance = (currId) => {
+        var employeeInfo = map[currId];
+        importance += employeeInfo.importance;
+        var subIds = employeeInfo.subordinates;
+        for(var id of subIds) {
+            calcImportance(id);
+        }
+    }
+    calcImportance(id);
     return importance;
 };
+
+
+//     importanceHelper(id);
+//     return importance;
