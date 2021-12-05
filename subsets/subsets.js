@@ -10,14 +10,13 @@ var subsets = function(nums) {
     }
     
     var findSubsets = (list, start) => {
-        
+        result.push(list.slice());
         
         for(var i = start ; i < nums.length; i++) {// i = start not 0!!! use start to control you keep choosing the next element to add to your list
             list.push(nums[i]);
             findSubsets(list, i+1);
             list.pop();
         }
-        result.push(list.slice());
     }
     
     findSubsets([], 0);
