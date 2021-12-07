@@ -38,8 +38,8 @@ var findLeaves = function(root) {
 }
 
 //----------------findDepth-------------------
-//depth就是在树是同一个level，大家的depth都一样
-
+//depth就是在树是同一个level，大家的depth都一样, 遍历一遍，也不需要return什么
+// 还是dfs，但是做出来的是bfs的效果【【1】，【2，3】，【4，5】】
 // var findDepth = function(root, depth) {
 //     if(root === null) {
 //         return;
