@@ -9,7 +9,6 @@ var longestStrChain = function(words) {
             return map[str];
         }
         if(words.indexOf(str) === -1) {
-            //longest = Math.max(longest, depth);
             return 0;
         }
         var max = 0;
@@ -25,7 +24,7 @@ var longestStrChain = function(words) {
 
     var longest=0;
     for(var word of words) {
-        longest = Math.max(longest, findChain(word, 0));
+        longest = Math.max(longest, findChain(word));
     }
     return longest;
 };
