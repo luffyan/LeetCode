@@ -3,18 +3,48 @@
  * @return {boolean}
  */
 
-
 var canJump = function(nums) {
-    // var map = {};
-    // return canJumpFrom(0, nums, map);
-    var lastPos = nums.length - 1;
-    for(var i = lastPos; i >= 0; i--) {
-        if(nums[i] + i >= lastPos) {   
-            lastPos = i;
+    // starting from index 0, try all combos jumps, if can reach nums.length -1 pos, return true;(base case)
+    // else return false;
+    var map = {};
+    var jumpHelper = (start) => {
+        if(map.hasOwnProperty(start)) {
+            return map[start];
         }
+        if(start === nums.length-1) {
+            return true;
+        }
+        // check for boundary
+        var furthest = Math.min(nums[start] + start, nums.length-1);
+        
+        for(var i = furthest; i > start; i--) {
+                if(map[i]) return true;
+                if(jumpHelper(i)) {
+                    map[start] = true;
+                    return true;
+                }
+        }
+        map[start] = false;
+        return false;
     }
-    return lastPos === 0;
+    return jumpHelper(0);
 };
+
+
+// var canJump = function(nums) {
+//     // var map = {};
+//     // return canJumpFrom(0, nums, map);
+    
+//     //jump from the last position, if sec to last can jump to last,
+//     //update sec to last to be last, check if third to last can jump to sec to last
+//     var lastPos = nums.length - 1;
+//     for(var i = lastPos; i >= 0; i--) {
+//         if(nums[i] + i >= lastPos) {   
+//             lastPos = i;
+//         }
+//     }
+//     return lastPos === 0;
+// };
 
 // DP = backtrack with memoization
 
