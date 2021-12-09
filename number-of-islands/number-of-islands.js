@@ -2,32 +2,31 @@
  * @param {character[][]} grid
  * @return {number}
  */
+
+
 var numIslands = function(grid) {
-   
-    var num = 0;
-    var nrow = grid.length;
-    var ncol = grid[0].length;
-    for (var i = 0; i < nrow; i++) {
-        for (var j = 0; j < ncol; j++) {
-             if(grid[i][j] === "1") {
-                num++;
-                sink(grid, i, j);
+    var count = 0;
+    for (var i = 0; i < grid.length; i++) {
+        for (var j = 0; j < grid[0].length; j++) {
+            if(grid[i][j] === '1') {
+                findConnected(grid, i, j);
+                count++;
             }
         }
     }
-    return num;
-};
+    return count;
+}
 
-var sink = function(grid, row, col) {
-    var nrow = grid.length;
-    var ncolumn = grid[0].length;
-    
-    if(row < 0 || col < 0 || row === nrow || col=== ncolumn || grid[row][col] === "0") {
+var findConnected = (grid, i, j) => {
+    if (i < 0 || j < 0 || i === grid.length || j == grid[0].length || grid[i][j] === '0') {
         return;
     }
-    grid[row][col] = "0";
-    sink(grid, row-1, col);
-    sink(grid, row, col-1);
-    sink(grid, row, col+1);
-    sink(grid, row+1, col);    
+    
+    if(grid[i][j] === '1') {
+        grid[i][j] = '0';
+        findConnected(grid, i+1, j);
+        findConnected(grid, i-1, j);
+        findConnected(grid, i, j+1);
+        findConnected(grid, i, j-1);
+    }
 }
