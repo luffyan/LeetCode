@@ -12,7 +12,6 @@
  * @return {boolean}
  */
 var hasPathSum = function(root, targetSum) {
-    if (root === null) return false;
     return dfs(root, targetSum, 0);
 };
 
@@ -29,3 +28,4 @@ var dfs = (root, targetSum, sum) => {
 
 // find all combo of sums
 // base case: sum === target
+
