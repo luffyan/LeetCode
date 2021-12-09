@@ -4,17 +4,21 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+    //iterate through the array,
+    // if curr is the answer to prev numbers(in the map)
+    // return curr idx, prev ind
+    // map ={ ans: idx}, target-nums[idx] = ans
     var map = {};
-    for (var i = 0; i < nums.length; i++) {
-        var curr = nums[i];
-        var x = target - curr;
-        if (x in map) {
-            return [i, map[x]];
+    var result = [];
+    for(var i = 0; i < nums.length; i++) {
+        if(map.hasOwnProperty(target - nums[i])) {
+            result.push(map[target - nums[i]]);
+            result.push(i);
+            return result;
+        } else {
+            map[nums[i]] = i;
         }
-        map[curr] = i; 
-        console.log(curr)
-         console.log(map[curr])
     }
-   
-    
 };
+
+//[2,7,11,15]  9
