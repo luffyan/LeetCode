@@ -11,26 +11,20 @@
  * @return {number[][]}
  */
 var levelOrder = function(root) {
-    if(root === null) return [];
-    var queue = [];
     var result = [];
-    
-    queue.push(root);
-    
-    while(queue.length !== 0) {
-        //记录当前层有几个元素
-        var n = queue.length;
-        var temp = [];
-        //一口气处理完一层
-        while (n > 0) {
-            var curr = queue.shift();
-            temp.push(curr.val);
-            
-            if(curr.left !== null) queue.push(curr.left);
-            if(curr.right !== null) queue.push(curr.right);
-            n--;
+    var postOrder = (node, depth) => {
+        if(node === null) {
+            return;
         }
-        result.push(temp);
+        if(result[depth] === undefined) {
+            result.push([]);
+        }
+        result[depth].push(node.val);
+        postOrder(node.left, depth+1);
+        postOrder(node.right, depth+1);
+        
     }
+    postOrder(root, 0);
     return result;
 };
+
