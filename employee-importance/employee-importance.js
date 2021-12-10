@@ -15,23 +15,30 @@
 var GetImportance = function(employees, id) {
     // build a map
     var map = {};
-    var importance = 0;
     for(var employee of employees) {
         map[employee.id] = employee;
     }
+    console.log(map);
     
-    var calcImportance = (currId) => {
-        var employeeInfo = map[currId];
-        importance += employeeInfo.importance;
-        var subIds = employeeInfo.subordinates;
-        for(var id of subIds) {
-            calcImportance(id);
+    var findImportance = (id) => {
+        var employee = map[id];
+        //console.log(employee);
+        // if(!employee.subordinates) {
+        //     return employee.importance;
+        // }
+        var sum = 0;
+        for(var subId of employee.subordinates) {
+            sum += findImportance(subId);
         }
-    }
-    calcImportance(id);
-    return importance;
-};
+        return sum + employee.importance;
+    };
+    
+    return findImportance(id);
+    
+}
+    
 
 
-//     importanceHelper(id);
-//     return importance;
+// find the employees' all subordinates importances, 
+// add that to the importance of employee itself
+
