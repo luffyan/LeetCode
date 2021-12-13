@@ -18,12 +18,14 @@ var letterCombinations = function(digits) {
     var result = [];
     
     var findCombos = function(str, idx) {
-        if(idx === digits.length) {
+        if(str.length === digits.length) {
             result.push(str);
             return;
         }
         for(char of map[digits[idx]]) {
-            findCombos(str+char, idx+1);
+            var newStr = str + char;
+            findCombos(newStr, idx+1);
+            
         }
     }
     
