@@ -20,12 +20,13 @@ var getOrder = function(tasks) {
     //选择处理时间最小的任务
     // create a pq to store the available tasks for processing
     // first priority pt, sec idx
-    //var pq = new MinPriorityQueue((t1, t2) => (t1[1] === t2[1] ? t1[2] - t2[2] : t1[1] - t2[1]));
+    // var pq = new MinPriorityQueue((t1, t2) => (t1[1] === t2[1] ? t1[2] - t2[2] : t1[1] - t2[1]));
+    //const pq = new PriorityQueue(function(x, y) {
     let pq = new MinPriorityQueue({
         priority: ([et, pt, idx]) => pt * 10**5 + idx,
     });
     //enqIdx is the next element to be added to the pq
-    var time = 0; resIdx = 0, enqIdx = 0;
+    var time = 0; enqIdx = 0;
     
     for(var i = 0; i < tasks.length; i++) {
         /// 如果没有可以执行的任务，直接快进
