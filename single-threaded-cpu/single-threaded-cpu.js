@@ -28,7 +28,7 @@ var getOrder = function(tasks) {
     //enqIdx is the next element to be added to the pq
     var time = 0; enqIdx = 0;
     
-    for(var i = 0; i < tasks.length; i++) {
+    while(tasks.length !== order.length) {
         /// 如果没有可以执行的任务，直接快进
         if(pq.size() === 0) {
             time = Math.max(time,startOrder[enqIdx][0]);
