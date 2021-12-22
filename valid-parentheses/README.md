@@ -26,18 +26,6 @@
 <strong>Output:</strong> false
 </pre>
 
-<p><strong>Example 4:</strong></p>
-
-<pre><strong>Input:</strong> s = "([)]"
-<strong>Output:</strong> false
-</pre>
-
-<p><strong>Example 5:</strong></p>
-
-<pre><strong>Input:</strong> s = "{[]}"
-<strong>Output:</strong> true
-</pre>
-
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
 
