@@ -23,4 +23,40 @@ var subsets = function(nums) {
     return result;
 };
 
+    
+
+// findSubsets: [], start = 0
+//     result : [[]]
+//     i = 0: list = [1]: 
+//     findsubset: [1], start = 1:
+//         result: [[], [1]]
+//         i = 1: list=[1,2]:
+//         findsubset: [1,2], start= 2:
+//             result: [[], [1], [1,2]]
+//             i = 2: list=[1,2,3]
+//             findsubset([1,2,3], start = 3)
+//                 result:[[], [1], [1,2], [1,2,3]]
+//             list=[1,2]
+//         list=[1],
+//         i = 2: list=[1,3]
+//         findsubset([1,3], start=3)
+//             result=[[[], [1], [1,2], [1,2,3]],[1,3]],
+//         list=[1]
+//     list=[]
+//     i = 1;list=[2]
+//     findsubset([2], start = 2)
+//         result = [[], [1], [1,2], [1,2,3],[1,3],[2]]
+//         i = 2: list=[2,3]
+//         findsubset([2,3], start = 3)
+//             result = [[], [1], [1,2], [1,2,3],[1,3],[2],[2,3]]
+//         list[2]
+//     list[]
+
+//     i = 2; list=[3]
+//     findsubset([3], start = 3)
+//         result =  [[], [1], [1,2], [1,2,3],[1,3],[2],[2,3],[3]]
+//     list[]
+
+
+
 
