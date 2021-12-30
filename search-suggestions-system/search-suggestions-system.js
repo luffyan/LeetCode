@@ -17,20 +17,25 @@ var suggestedProducts = function(products, searchWord) {
         //console.log(start);
         
         result.push([]);
+        //如果没找到lowerbound，就找下一个
         if(start === -1) {
             continue;
         }
+        //如果找到了lowerbound，就找3个
         for(var i = start; i < Math.min(start+3, n); i++) {
-            if(products[i].length < prefix.length || products[i].substring(0, prefix.length) !== prefix) {
+            //check for lowerbound后面的两个
+            if(products[i].substring(0, prefix.length) !== prefix) {
                 break;
             }
             result[result.length-1].push(products[i]);
         }
+        //优化bs下次从这次的start开始
         bsStart = start;
     }
     return result;
 };
 
+//helper functin 找到lowerbound
 var findLowerBound = function(products, start, word) {
     var left = 0;
     var right = products.length - 1;
