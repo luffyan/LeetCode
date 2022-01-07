@@ -26,7 +26,7 @@ var minimumCost = function(n, connections) {
             weights[rootB] += weights[rootA];
         }
     }
-    
+    // find root, 只有root等于自己的parent
     function find(a) {
         while(a !== parents[a]) {
             parents[a] = parents[parents[a]];
