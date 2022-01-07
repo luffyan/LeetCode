@@ -28,11 +28,15 @@ var minimumCost = function(n, connections) {
     }
     // find root, 只有root等于自己的parent
     function find(a) {
-        while(a !== parents[a]) {
-            // parents[a] = parents[parents[a]];
-            a = parents[a];
+        // while(a !== parents[a]) {
+        //     // parents[a] = parents[parents[a]];
+        //     a = parents[a];
+        // }
+        // return a;
+        if(a === parents[a]){
+            return a;
         }
-        return a;
+        return parents[a] = find(parents[a]);
     }
     
     function isConnected(a, b) {
