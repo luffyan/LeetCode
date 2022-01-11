@@ -11,15 +11,20 @@ var subsets = function(nums) {
         return result;
     }
     var findSubsets = (list, start) => {
-        result.push(list.slice());//别忘了slice
+        
         for(var i = start ; i < nums.length; i++) {// i = start not 0!!! use start to control you keep choosing the next element to add to your list
+            //告诉它从i开始build all subset list
             list.push(nums[i]);
+            //找到所有的以nums[i]开头的list
             findSubsets(list, i+1);
+            result.push(list.slice());//别忘了slice
+            //把nums[i]去除
             list.pop();
         }
     }
     
     findSubsets([], 0);
+    result.push([]);
     return result;
 };
 
