@@ -15,7 +15,7 @@ var isValid = function(s) {
         if(char in map) {
             stack.push(char);
         } else {
-            let pop = stack.splice(-1);
+            let pop = stack.pop();
             if (map[pop] !== char) {
                 return false;
             }
