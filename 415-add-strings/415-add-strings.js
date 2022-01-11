@@ -20,5 +20,5 @@ var addStrings = function(num1, num2) {
         p1--;
         p2--;
     }
-    return sum.reverse().join("");
+    return sum.reverse().join('');
 };
