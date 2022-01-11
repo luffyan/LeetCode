@@ -11,9 +11,7 @@ var minSwaps = function(data) {
         }
     }
     //6
-    if(totalOnes === 1){
-        return 0;
-    }
+    
     //sliding window, window size = totalOnes
     
     //scan through data array, record current seen ones in the window, 
