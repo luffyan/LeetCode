@@ -17,8 +17,12 @@ var sumSubarrayMins = function(arr) {
     var stack1 = [];
     var stack2 = [];
     //find PLE, record number of elements to the left of current element that is strictly bigger 
-    for(var i = 0; i < arr.length; i++) {//[1,5,6,2,4,6,3] => [1,2,4,6]
+    for(var i = 0; i < arr.length; i++) {
+        //arr = [1,5,6,2,4,6,3] => [1,2,3]
+        //leftIdx = [-1, 0,]
         //stack is increasing order, stack stores idx of number in arr
+        //top of stack stores the PLE idx
+        //when two numbers are equal??
         while(stack1.length !== 0 && arr[i] <= arr[stack1[stack1.length-1]]){
             stack1.pop();
         }
