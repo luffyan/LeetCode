@@ -20,9 +20,13 @@ var sumSubarrayMins = function(arr) {
     for(var i = 0; i < arr.length; i++) {
         //arr = [1,5,6,2,4,6,3] => [1,2,3]
         //leftIdx = [-1, 0,]
+        //leftIdx stores PLE idx, if none, set -1
         //stack is increasing order, stack stores idx of number in arr
         //top of stack stores the PLE idx
-        //when two numbers are equal??
+        //when two numbers are equal, stack strictly increase
+        //[71,55,82,55]
+        //leftIdx=[-1, -1, 1, -1]
+        //[0,1,2,3]
         while(stack1.length !== 0 && arr[i] <= arr[stack1[stack1.length-1]]){
             stack1.pop();
         }
@@ -33,6 +37,8 @@ var sumSubarrayMins = function(arr) {
     
     //find NLE, record number of elements to the right of current element that is strictly bigger
     for(var i = arr.length-1; i >= 0; i--) {//[3,1,2,4] =>[1]
+        //[71,55,82,55]
+        //rightIdx = [1,3,3,4]
         while(stack2.length !== 0 && arr[i] < arr[stack2[stack2.length - 1]]) {
             stack2.pop();
         }
@@ -41,7 +47,7 @@ var sumSubarrayMins = function(arr) {
     }
     
     for(var i = 0; i < arr.length; i++) {
-        total += arr[i] * (i - leftIdx[i]) * (rightIdx[i] - i);
+        total = (total + arr[i] * (i - leftIdx[i]) * (rightIdx[i] - i)) % (10**9 + 7);
     }
-    return total % (10**9 + 7);
+    return total;
 };
