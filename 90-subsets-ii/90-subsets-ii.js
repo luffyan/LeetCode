@@ -19,7 +19,8 @@ var subsetsWithDup = function(nums) {
             //recursion的时候，每次从往后找新的startIdx,所以start >= i
             //但是每次新一个startIdx的时候，新的startIdx数字和之前一样的话要去重
             //start 表示build list start with startIdx
-            //只有当每次一个新的i++为start的时候
+            //只有当每次一个新的i++为start的时候,
+            //for each recursion, start = i+1, start > i
             if(i > start && nums[i] === nums[i-1]) { 
                 continue;
             }
