@@ -29,7 +29,7 @@ var permute = function(nums) {
             findPermute(list);
             //remove current item
             list.pop();
-            visited[i] = undefined;
+            visited[i] = false;
         }
     }
     
