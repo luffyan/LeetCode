@@ -47,9 +47,13 @@ findCombos(0, [], 0)
                     i = 1;
                         list[2,2,3]
                         result[[223]]
+                        list[2,2]
                     i = 2;
+                        list[2,2]
                     i = 3;
+                        list[2,2]
             i = 1;
+                list[2,3]
             i = 2;
             i = 3;
     i = 1;
