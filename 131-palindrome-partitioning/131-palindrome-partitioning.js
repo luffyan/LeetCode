@@ -17,6 +17,7 @@ var partition = function(s) {
         
         if(start === s.length) {
             result.push(list.slice());
+            return;
         }
         
         for(var end = start; end < s.length; end++) {
