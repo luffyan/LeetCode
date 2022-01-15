@@ -27,7 +27,10 @@ var permuteUnique = function(nums) {
             return;
         }
         for(var i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i] === nums[i - 1] && visited[i - 1]) {
+            //只有重复的第一个元素recursion
+            //如果是重复的第二个，第一个在结尾会被标记成visited[i]=false;
+            //如果是重复的第三个及以后，前面一个是没被visited过的
+            if (i > 0 && nums[i] === nums[i - 1] && !visited[i - 1]) {
                 continue;
             }
             if(visited[i]) {
