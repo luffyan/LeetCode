@@ -15,7 +15,7 @@ var partition = function(s) {
     
     var findPalindrome = function(list, start) {
         
-        if(start >= s.length) {
+        if(start === s.length) {
             result.push(list.slice());
         }
         
