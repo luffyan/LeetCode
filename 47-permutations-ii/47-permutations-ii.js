@@ -27,7 +27,7 @@ var permuteUnique = function(nums) {
             return;
         }
         for(var i = 0; i < nums.length; i++) {
-            if (i > 0 && nums[i] === nums[i - 1] && !visited[i - 1]) {
+            if (i > 0 && nums[i] === nums[i - 1] && visited[i - 1]) {
                 continue;
             }
             if(visited[i]) {
