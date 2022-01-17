@@ -11,33 +11,24 @@
  * @return {number}
  */
 var diameterOfBinaryTree = function(root) {
-    
-    // traverse tree, find diameter for each node
-    // update max diameter
-    var max = 0;
-    var traverse = function (node) {
+    //最长的diameter是一个节点的左右子树最大深度之和
+    //就是一个节点的左右子树的最大深度之和。
+    var maxDiameter = 0;
+    var findDepth = function(node) {
         if(node === null) {
-            return;
+            return 0;
         }
-
-        var left = maxDepth(node.left);
-        var right = maxDepth(node.right);
-        var diameter = left + right + 2;
-        max = Math.max(max, diameter);
-        traverse(node.left);
-        traverse(node.right);
-    }
-    var maxDepth = function(node) {
-        if(node === null) {
-            return -1;
-        }
-        var left = maxDepth(node.left);
-        var right = maxDepth(node.right);
+        var left = findDepth(node.left);
+        var right = findDepth(node.right);
+        
+        var diameter = left + right;
+        maxDiameter = Math.max(maxDiameter, diameter);
+        
         return Math.max(left, right) + 1;
     }
-    traverse(root);
-    return max;
     
+    findDepth(root);
+    return maxDiameter;
     
     
     // var diameter = 0;
