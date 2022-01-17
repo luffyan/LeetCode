@@ -10,10 +10,11 @@ var findKthLargest = function(nums, k) {
     
     var pq = new MinPriorityQueue();
     for(var num of nums) {
-        if(pq.size() < k || pq.front().element < num) {
-            pq.enqueue(num);
-        }
-        
+        //further optimize
+        // if(pq.size() < k || pq.front().element < num) {
+        //     pq.enqueue(num);
+        // }
+        pq.enqueue(num);
         if(pq.size() > k) {
             pq.dequeue().element;
         }
