@@ -12,58 +12,44 @@
  */
 var diameterOfBinaryTree = function(root) {
     
-    var leftMax = 0; 
-    var rightMax = 0;
-    var findD = function(root) {
-        if(root.left === null && root.right === null) {
-            return 0;
+    // traverse tree, find diameter for each node
+    // update max diameter
+    var max = 0;
+    var traverse = function (node) {
+        if(node === null) {
+            return;
         }
-        var leftMax = Math.max(leftMax, diameterOfBinaryTree(root.left));
-        var rightMax = Math.max(rightMax, diameterOfBinaryTree(root.right));
-        return leftMax + rightMax;
-    }
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    var diameter = 0;
-    var findLongestPath = (node) => {
-        if(!node) {
-            return 0;
-        }
-        var left = findLongestPath(node.left);
-        var right = findLongestPath(node.right);
-        diameter = Math.max(left+right, diameter);
-        return Math.max(left, right)+1;
+        var left = maxDepth(node.left);
+        var right = maxDepth(node.right);
+        var diameter = left + right + 2;
+        max = Math.max(max, diameter);
+        traverse(node.left);
+        traverse(node.right);
     }
-    findLongestPath(root);
-    return diameter;
+    var maxDepth = function(node) {
+        if(node === null) {
+            return -1;
+        }
+        var left = maxDepth(node.left);
+        var right = maxDepth(node.right);
+        return Math.max(left, right) + 1;
+    }
+    traverse(root);
+    return max;
+    
+    
+    
+    // var diameter = 0;
+    // var findLongestPath = (node) => {
+    //     if(!node) {
+    //         return 0;
+    //     }
+    //     var left = findLongestPath(node.left);
+    //     var right = findLongestPath(node.right);
+    //     diameter = Math.max(left+right, diameter);
+    //     return Math.max(left, right)+1;
+    // }
+    // findLongestPath(root);
+    // return diameter;
 };
