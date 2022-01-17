@@ -16,5 +16,5 @@ var findKthLargest = function(nums, k) {
         }
     }
     
-    return pq.dequeue().element;
+    return pq.front().element;
 };
