@@ -22,6 +22,8 @@ var dfs = function(root, targetSum, sum) {
     if(root.left === null && root.right === null) {
         if(targetSum === sum + root.val) {
             return true;
+        }else{
+            return false;
         }
     }
     return dfs(root.left, targetSum, sum + root.val) ||
