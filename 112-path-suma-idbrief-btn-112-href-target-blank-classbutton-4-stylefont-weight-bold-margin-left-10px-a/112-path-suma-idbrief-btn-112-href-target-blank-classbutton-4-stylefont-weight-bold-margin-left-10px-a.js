@@ -19,15 +19,15 @@ var dfs = function(root, targetSum, sum) {
     if(root === null) {
         return false;
     }
+    sum += root.val;
     if(root.left === null && root.right === null) {
-        if(targetSum === sum + root.val) {
+        if(targetSum === sum) {
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
-    return dfs(root.left, targetSum, sum + root.val) ||
-    dfs(root.right, targetSum, sum + root.val);
+    return dfs(root.left, targetSum, sum) ||
+    dfs(root.right, targetSum, sum);
 }
 
 
