@@ -31,7 +31,7 @@ var threeSum = function(nums) {
                 result.push([nums[start-1], nums[left], nums[right]]);
                 left++;
                 right--;
-                while (left < right && nums[left] == nums[left-1]) left++;
+                while (nums[left] == nums[left-1]) left++;
                 //while (left < right && nums[right] == nums[right+1]) right--;
             } else if(sum > target) {//[1,2,3,3,3,3]
                 right--;
