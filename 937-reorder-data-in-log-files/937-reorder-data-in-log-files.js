@@ -24,8 +24,7 @@ var reorderLogFiles = function(logs) {
             digitLogs.push(log);
         }
     }
-    console.log(letterLogs);
-    console.log(digitLogs);
+  
     letterLogs.sort((a, b) => {
         const aContent = a.slice(a.indexOf(' ') + 1);
         const bContent = b.slice(b.indexOf(' ') + 1);
