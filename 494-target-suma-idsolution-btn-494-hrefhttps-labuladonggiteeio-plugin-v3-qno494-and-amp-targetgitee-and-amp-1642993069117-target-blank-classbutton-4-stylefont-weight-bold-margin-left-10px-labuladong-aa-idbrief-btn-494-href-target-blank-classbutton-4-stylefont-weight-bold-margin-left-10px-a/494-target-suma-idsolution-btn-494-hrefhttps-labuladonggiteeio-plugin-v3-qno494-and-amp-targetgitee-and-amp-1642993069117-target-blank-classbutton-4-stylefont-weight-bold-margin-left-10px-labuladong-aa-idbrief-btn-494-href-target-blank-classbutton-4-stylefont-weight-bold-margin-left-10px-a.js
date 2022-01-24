@@ -8,21 +8,29 @@ var findTargetSumWays = function(nums, target) {
     //choices: +, -
     //global count
     //idx, sum,
-    //base case: idx = len-1
+    //base case: idx = len
+    //optimize with memo, return sum
+    //for the same idx and sum, memo[[idx,sum]] = count;
     var count = 0;
+    var memo = {};
     var dfs = function(idx, sum) {
+        var key = idx.toString() + ',' + sum.toString();
+        if(key in memo) {
+            return memo[key];
+        } 
         if(idx === nums.length) {
             if(target === sum) {
-                count++;
+                return 1;
+            } else {
+                return 0;
             }
-            return;
         }
-        
-        dfs(idx+1, sum+nums[idx]);
-        dfs(idx+1, sum-nums[idx]);
+        var currCount = dfs(idx+1, sum+nums[idx]) + dfs(idx+1, sum-nums[idx]);
+        memo[key] = currCount;
+        return currCount;
     }
-    dfs(0, 0);
-    return count;
+    return dfs(0, 0);
+
     
     
     
