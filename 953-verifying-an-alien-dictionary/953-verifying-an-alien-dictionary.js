@@ -11,6 +11,7 @@ var isAlienSorted = function(words, order) {
     //map['w'] = 0;
     
     //app, apple
+    //compare adjacent words, every two words
     var map = {}
     for(var i = 0; i < order.length; i++) {
         map[order[i]] = i;
@@ -31,13 +32,20 @@ var isAlienSorted = function(words, order) {
     
 };
 // apple, app // i = 1; j = 0,1,2 < 3
+//
 var comparator = function(a, b, map) {
-    if(map[a] > map[b]) {
+    if(a === undefined) {
+        return 1;
+    }
+    if(b === undefined) {
         return -1;
+    }
+    if(map[a] < map[b]) {
+        return 1;
     } else if(map[a] === map[b]) {
         return 0;
     } else {
-        return 1;
+        return -1;
     }
 }
 
