@@ -16,9 +16,8 @@ var countPrimes = function(n) {
     var array = new Array(n).fill(true);
     
     for(var i = 2; i <= Math.sqrt(n); i++) {
-        for(var j = 2; i*j < n; j++) {
-            var idx = i * j;
-            array[idx] = false;
+        for(var j = i*i; j < n; j+=i) {
+            array[j] = false;
         }
     }
     var count = 0;
