@@ -23,9 +23,9 @@ var Node =  function(key, value, next = null, prev = null){
  * @return {number}
  */
 LRUCache.prototype.get = function(key) {
-    var existingNode = this.map[key];
-    if(existingNode) {
-        var value = existingNode.value;
+    //var existingNode = this.map[key];
+    if(key in this.map) {
+        var value = this.map[key].value;
         this.put(key, value);
         return value;
     }
