@@ -22,10 +22,12 @@ var Node =  function(key, value, next = null, prev = null){
  * @param {number} key
  * @return {number}
  */
+//O(1) for get, store key and node pair in map
 LRUCache.prototype.get = function(key) {
     var existingNode = this.map[key];
     if(existingNode) {
         var value = existingNode.value;
+        //update recently used by putting a new pair at the head of DLL
         this.put(key, value);
         return value;
     }
@@ -46,7 +48,6 @@ LRUCache.prototype.put = function(key, value) {
         this.size--;
     } else if(this.size === this.capacity){
         //delete from map
-        //console.log(this.tail.key);
         delete this.map[this.tail.key];
         //detach from doubly LL
         this.detach(this.tail);
