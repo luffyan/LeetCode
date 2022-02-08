@@ -13,7 +13,7 @@ var search = function(nums, target) {
             return mid;
         } else if(nums[mid] >= nums[start]) {//mid is in non-rotated array
             //if target is in the non-rotated array
-            if(target >= nums[start] && target < nums[mid]) {
+            if(target >= nums[start] && target <= nums[mid]) {
                 end = mid;
             } else {
                 start = mid;
@@ -21,7 +21,7 @@ var search = function(nums, target) {
         } else {
             //if mid is in rotated array
             //if target is in nonrotated part of the array
-            if(target > nums[mid] && target <= nums[end]) {
+            if(target >= nums[mid] && target <= nums[end]) {
                 start = mid;
             } else {
                 end = mid;
