@@ -16,18 +16,15 @@ var countPrimes = function(n) {
     
     var array = new Array(n);
     array.fill(true);
-    // for (var i =0; i<n; i++) {
-    //     array[i] = false;
-    // }
+   //关键点在于这道题不算n在内
     for(var i = 2; i * i < n; i++) {
         for(var j = i*i; j < n; j+=i) {
             array[j] = false;
         }
     }
     var count = 0;
-    //console.log("size: ", array.length);
+//计算有几个prime的时候，从2开始数，跳过0和1
     for(var i = 2; i < n; i++) {
-        //console.log("i:", i, " array[i]:", array[i]);
         if(array[i]) {
             count++;
         }
