@@ -21,7 +21,7 @@ var search = function(nums, target) {
         } else {
             //if mid is in rotated array
             //if target is in nonrotated part of the array
-            if(target >= nums[mid] && target <= nums[end]) {
+            if(target > nums[mid] && target <= nums[end]) {
                 start = mid;
             } else {
                 end = mid;
