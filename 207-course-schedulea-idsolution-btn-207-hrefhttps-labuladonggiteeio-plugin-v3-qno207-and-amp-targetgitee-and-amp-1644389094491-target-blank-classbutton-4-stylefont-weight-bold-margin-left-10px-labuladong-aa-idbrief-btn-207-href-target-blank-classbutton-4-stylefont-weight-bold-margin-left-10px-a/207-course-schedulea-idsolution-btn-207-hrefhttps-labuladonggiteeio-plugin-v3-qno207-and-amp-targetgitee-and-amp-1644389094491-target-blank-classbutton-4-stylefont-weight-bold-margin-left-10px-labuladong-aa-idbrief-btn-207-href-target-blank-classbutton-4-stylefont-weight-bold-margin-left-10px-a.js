@@ -19,7 +19,7 @@ var canFinish = function(numCourses, prerequisites) {
     //mark visited node to avoid dead loop
     //mark onPath to check if circle exists
     
-    console.log(graph);
+
     var hasCircle = false;
     var onPath = new Array(numCourses);
     var visited = new Array(numCourses);
@@ -32,7 +32,7 @@ var canFinish = function(numCourses, prerequisites) {
         }
         visited[i] = true;
         onPath[i] = true;
-        console.log(graph[i], i);
+
         for(var course of graph[i]) {
             dfs(graph, course);
         }
