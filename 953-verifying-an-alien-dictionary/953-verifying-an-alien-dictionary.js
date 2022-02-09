@@ -4,9 +4,7 @@
  * @return {boolean}
  */
 var isAlienSorted = function(words, order) {
-    //comparator to compare
-    //for each word in the words array,
-        //find char idx order.indexOf('w')
+    //write comparator to compare
     //put char from order into hashmap,
     //map['w'] = 0;
     
@@ -17,13 +15,15 @@ var isAlienSorted = function(words, order) {
         map[order[i]] = i;
     }
     for(var i = 1; i < words.length; i++) {
-        for(var j = 0; j < words[i].length; j++) {
+        var word1 = words[i-1];
+        var word2 = words[i];
+        for(var j = 0; j < word1.length; j++) {
             
-            if(comparator(words[i-1][j], words[i][j], map) < 0) {
+            if(comparator(word1[j], word2[j], map) < 0) {//"lello""heetcode"
                 return false;
-            } else if(comparator(words[i-1][j], words[i][j], map) > 0) {
+            } else if(comparator(word1[j], word2[j], map) > 0) {
                 break;
-            } else if(j === words[i].length-1 && words[i].length < words[i-1].length) {
+            } else if(j === word2.length-1 && word1.length > word2.length) {
                 return false;
             }
         }
@@ -32,7 +32,7 @@ var isAlienSorted = function(words, order) {
     
 };
 // apple, app // i = 1; j = 0,1,2 < 3
-//
+// small positive, large negative
 var comparator = function(a, b, map) {
     if(a === undefined) {
         return 1;
