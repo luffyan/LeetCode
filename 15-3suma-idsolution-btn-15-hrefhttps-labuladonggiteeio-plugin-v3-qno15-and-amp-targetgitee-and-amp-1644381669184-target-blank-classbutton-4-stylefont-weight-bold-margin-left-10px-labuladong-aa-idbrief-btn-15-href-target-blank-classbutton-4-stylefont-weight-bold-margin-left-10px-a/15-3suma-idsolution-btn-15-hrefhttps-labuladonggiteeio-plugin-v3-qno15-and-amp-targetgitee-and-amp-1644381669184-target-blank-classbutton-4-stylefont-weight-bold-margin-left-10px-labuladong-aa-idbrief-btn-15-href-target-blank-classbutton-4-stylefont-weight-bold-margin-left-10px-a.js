@@ -57,7 +57,7 @@ var twoSum = function(complement, start, nums, result) {
         if(numSet.has(comp)) {
             result.push([nums[start-1], comp, nums[i]]);
             numSet.delete(comp);
-            while(nums[i+1] == nums[i] && i+1 < nums.length){
+            while(nums[i+1] === nums[i] && i+1 < nums.length){
                 i++;
             }
         }else{
