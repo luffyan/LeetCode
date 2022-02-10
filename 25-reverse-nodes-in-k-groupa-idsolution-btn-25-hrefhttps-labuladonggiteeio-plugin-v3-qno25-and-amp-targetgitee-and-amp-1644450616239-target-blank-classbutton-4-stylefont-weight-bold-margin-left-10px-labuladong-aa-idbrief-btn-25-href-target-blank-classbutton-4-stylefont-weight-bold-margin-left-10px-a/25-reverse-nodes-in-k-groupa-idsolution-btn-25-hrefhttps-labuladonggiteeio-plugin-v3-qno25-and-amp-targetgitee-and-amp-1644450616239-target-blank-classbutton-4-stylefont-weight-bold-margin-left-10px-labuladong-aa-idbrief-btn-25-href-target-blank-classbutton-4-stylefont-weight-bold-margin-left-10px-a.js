@@ -60,6 +60,7 @@ var reverseKNodes = function(head, k) {
         //reverse
         current.next = prev;
         //update
+        
         prev = current;
         current = nxt;
         k--;
