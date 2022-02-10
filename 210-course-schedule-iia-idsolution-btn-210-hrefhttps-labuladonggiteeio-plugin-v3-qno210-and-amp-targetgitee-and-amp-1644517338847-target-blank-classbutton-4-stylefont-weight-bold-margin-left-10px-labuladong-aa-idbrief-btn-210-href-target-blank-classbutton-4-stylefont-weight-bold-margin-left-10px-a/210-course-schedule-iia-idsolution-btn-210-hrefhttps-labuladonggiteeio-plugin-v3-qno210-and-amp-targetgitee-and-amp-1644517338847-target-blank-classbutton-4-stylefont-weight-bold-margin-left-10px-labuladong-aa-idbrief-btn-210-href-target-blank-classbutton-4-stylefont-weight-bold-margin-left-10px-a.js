@@ -18,32 +18,33 @@ var findOrder = function(numCourses, prerequisites) {
     
     //遍历图
     var traverse = function(graph, s) {
-    if (onPath[s]) {
-        // 发现环
-        hasCycle = true;
+        if (onPath[s]) {
+            // 发现环
+            hasCycle = true;
+        }
+        if (visited[s] || hasCycle) {
+            return;
+        }
+        // 前序遍历位置
+        onPath[s] = true;
+        visited[s] = true;
+        for (var t of graph[s]) {
+            traverse(graph, t);
+        }
+        // 后序遍历位置
+        postorder.push(s);
+        onPath[s] = false;
     }
-    if (visited[s] || hasCycle) {
-        return;
-    }
-    // 前序遍历位置
-    onPath[s] = true;
-    visited[s] = true;
-    for (var t of graph[s]) {
-        traverse(graph, t);
-    }
-    // 后序遍历位置
-    postorder.push(s);
-    onPath[s] = false;
-}
     
     // 遍历图
     for (var i = 0; i < numCourses; i++) {
         traverse(graph, i);
-    }
-    // 有环图无法进行拓扑排序
+        // 有环图无法进行拓扑排序
     if (hasCycle) {
         return [];
     }
+    }
+    
     // 逆后序遍历结果即为拓扑排序结果
     postorder.reverse();
     // var res = new int[numCourses];
