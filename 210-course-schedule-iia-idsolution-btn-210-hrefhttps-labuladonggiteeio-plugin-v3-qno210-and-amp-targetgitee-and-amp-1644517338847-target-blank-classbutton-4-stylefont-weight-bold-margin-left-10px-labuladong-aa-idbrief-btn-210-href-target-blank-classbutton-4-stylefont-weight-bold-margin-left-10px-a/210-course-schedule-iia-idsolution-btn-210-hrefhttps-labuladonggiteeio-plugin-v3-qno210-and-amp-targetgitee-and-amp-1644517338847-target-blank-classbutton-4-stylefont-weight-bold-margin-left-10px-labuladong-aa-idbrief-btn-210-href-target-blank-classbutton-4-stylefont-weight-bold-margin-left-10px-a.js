@@ -47,10 +47,6 @@ var findOrder = function(numCourses, prerequisites) {
     
     // 逆后序遍历结果即为拓扑排序结果
     postorder.reverse();
-    // var res = new int[numCourses];
-    // for (int i = 0; i < numCourses; i++) {
-    //     res[i] = postorder.get(i);
-    // }
     return postorder;
 }
 
