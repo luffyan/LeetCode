@@ -18,18 +18,21 @@ var reverseKGroup = function(head, k) {
     
     while(curr !== null) {
         var count = 0;
-        // curr = head;//?
+
         while(count < k && curr) {//curr指向要翻转的后一个node
             curr = curr.next;
             count++;
         }
         
         if(count === k) {//check if need to reverse
+            //如果需要反转，要做两件事，1.第一次反转要assign新的头，最后return这个头
+            //2.反转后把新的头接到上一个反转的尾巴上，第一次反转不做这个
             var revHead = reverseKNodes(head, k);
+            //if new_head还没被assign 过，只有第一次反转后assign new head
             if(new_head === null) {
                 new_head = revHead;
             }
-            
+            //反转后，把新的头连到上一个反转的尾巴，第一次反转不用做
             if(ktail !== null) {
                 ktail.next = revHead;
             }
