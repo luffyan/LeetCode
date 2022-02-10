@@ -50,7 +50,7 @@ var reverseKNodes = function(head, k) {
     if(k < 2) {
         return head;
     }
-    var prev = new ListNode(-1, null);
+    var prev = null;
     var current = head;
     
     while(k > 0) {
