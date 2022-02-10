@@ -40,9 +40,9 @@ var findOrder = function(numCourses, prerequisites) {
     for (var i = 0; i < numCourses; i++) {
         traverse(graph, i);
         // 有环图无法进行拓扑排序
-    if (hasCycle) {
-        return [];
-    }
+        if (hasCycle) {
+            return [];
+        }
     }
     
     // 逆后序遍历结果即为拓扑排序结果
