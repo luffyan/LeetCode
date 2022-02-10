@@ -15,19 +15,19 @@ var maxPathSum = function(root) {
     //postorder traversal, calculate current sum for current node
     //update max sum
     var max = Number.NEGATIVE_INFINITY;
-    var findDepthSum = function(node) {
+    var findPath = function(node) {
         if(node === null) {
             return 0;
         }
-        var left = Math.max(findDepthSum(node.left), 0);
-        var right = Math.max(findDepthSum(node.right), 0);
-        
+        var left = Math.max(findPath(node.left), 0);
+        var right = Math.max(findPath(node.right), 0);
+        //max return global max sum
         var currSum = left + right + node.val;
         max = Math.max(currSum, max);
-        
+        //recursion function return
         return Math.max(left, right) + node.val;
     }
-    findDepthSum(root);
+    findPath(root);
     return max;
 };
 
