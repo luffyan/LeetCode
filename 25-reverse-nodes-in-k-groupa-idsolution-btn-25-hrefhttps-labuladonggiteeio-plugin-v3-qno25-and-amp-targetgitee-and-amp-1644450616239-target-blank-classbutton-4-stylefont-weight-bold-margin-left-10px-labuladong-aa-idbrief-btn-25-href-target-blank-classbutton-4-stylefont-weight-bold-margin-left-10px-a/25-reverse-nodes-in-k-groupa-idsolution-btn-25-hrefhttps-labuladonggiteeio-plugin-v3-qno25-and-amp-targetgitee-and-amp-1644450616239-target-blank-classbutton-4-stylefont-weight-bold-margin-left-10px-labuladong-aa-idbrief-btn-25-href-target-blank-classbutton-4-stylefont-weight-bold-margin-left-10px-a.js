@@ -16,9 +16,9 @@ var reverseKGroup = function(head, k) {
     
     var new_head = null;
     
-    while(curr) {
+    while(curr !== null) {
         var count = 0;
-        curr = head;//?
+        // curr = head;//?
         while(count < k && curr) {//curr指向要翻转的后一个node
             curr = curr.next;
             count++;
