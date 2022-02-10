@@ -24,7 +24,7 @@ var reverseKGroup = function(head, k) {
             count++;
         }
         
-        if(count === k) {
+        if(count === k) {//check if need to reverse
             var revHead = reverseKNodes(head, k);
             if(new_head === null) {
                 new_head = revHead;
