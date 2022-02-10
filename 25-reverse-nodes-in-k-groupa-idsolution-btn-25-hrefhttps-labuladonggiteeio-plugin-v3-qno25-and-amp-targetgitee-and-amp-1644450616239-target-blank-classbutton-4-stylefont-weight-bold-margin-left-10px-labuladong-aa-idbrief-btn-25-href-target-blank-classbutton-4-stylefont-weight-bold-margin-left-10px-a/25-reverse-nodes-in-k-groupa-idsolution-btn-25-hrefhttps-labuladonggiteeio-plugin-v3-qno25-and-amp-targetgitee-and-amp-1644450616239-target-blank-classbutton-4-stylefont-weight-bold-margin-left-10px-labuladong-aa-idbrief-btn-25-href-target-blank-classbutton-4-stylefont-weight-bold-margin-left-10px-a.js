@@ -52,15 +52,16 @@ var reverseKNodes = function(head, k) {
     }
     var prev = null;
     var current = head;
+    var nxt = null;
     
-    while(k > 0) {
+    while(k > 0) {//1. 反转current.next = prev 2. update prev and current,这时候需要记录reverse之前的nxt
         //temp store next node
-        var next = current.next;
+        nxt = current.next;
         //reverse
         current.next = prev;
         //update
         prev = current;
-        current = next;
+        current = nxt;
         k--;
     }
     //return the head of the reversed list
